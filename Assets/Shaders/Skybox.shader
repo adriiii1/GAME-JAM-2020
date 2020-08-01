@@ -1,15 +1,13 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Skybox/Horizontal Skybox"
+﻿Shader "Skybox/Horizontal Skybox"
 {
     Properties
     {
-        _Color1 ("Top Color", Color) = (1, 1, 1, 0)
-        _Color2 ("Horizon Color", Color) = (1, 1, 1, 0)
-        _Color3 ("Bottom Color", Color) = (1, 1, 1, 0)
-        _Exponent1 ("Exponent Factor for Top Half", Float) = 1.0
-        _Exponent2 ("Exponent Factor for Bottom Half", Float) = 1.0
-        _Intensity ("Intensity Amplifier", Float) = 1.0
+        _Color1 ("Color superior", Color) = (1, 1, 1, 0)
+        _Color2 ("Color horizonte", Color) = (1, 1, 1, 0)
+        _Color3 ("Color inferior", Color) = (1, 1, 1, 0)
+        _Exponent1 ("Factor superior", Float) = 1.0
+        _Exponent2 ("Factor inferior", Float) = 1.0
+        _Intensity ("Intensidad", Float) = 1.0
     }
 
     CGINCLUDE
