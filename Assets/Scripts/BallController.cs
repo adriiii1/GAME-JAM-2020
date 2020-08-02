@@ -15,9 +15,9 @@ public class BallController : MonoBehaviour{
     }
 
     void Update(){
-        if(Input.GetKey("w")){
+        /*if(Input.GetKey("w")){
             rb.AddForce(camera.transform.forward * thrust);
-        }
+        }*/
         if(rb.velocity.magnitude> 10){
             rb.AddForce(rb.velocity * -thrust);
         }

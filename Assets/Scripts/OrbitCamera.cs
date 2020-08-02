@@ -115,8 +115,8 @@ public class OrbitCamera : MonoBehaviour {
 
 	bool ManualRotation () {
 		Vector2 input = new Vector2(
-			Input.GetAxis("Vertical"),
-			Input.GetAxis("Horizontal")
+			//Input.GetAxis("Vertical"),
+			//Input.GetAxis("Horizontal")
 		);
 		const float e = 0.001f;
 		if (input.x < -e || input.x > e || input.y < -e || input.y > e) {

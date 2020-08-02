@@ -16,12 +16,12 @@ public class RewindObject : MonoBehaviour{
     }
 
     void Update(){
-        if(Input.GetKey("f")){
+        /*if(Input.GetKey("f")){
             Rewind();
         }
         if(Input.GetKey("u")){
             Unwind();
-        }
+        }*/
     }
 
     public void Select(){
