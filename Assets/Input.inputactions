@@ -38,10 +38,26 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Hit",
+                    "name": "HitRight",
                     "type": "Button",
                     "id": "9d0e5a84-d3c4-4aa9-adc8-a175040cdff6",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "HitLeft",
+                    "type": "Button",
+                    "id": "840810c2-82b8-4a53-b091-53a9e9356cd5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "HitDirection",
+                    "type": "Value",
+                    "id": "50635cd8-0110-4585-b4fe-f02f459b6198",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 }
@@ -83,11 +99,11 @@
                 {
                     "name": "",
                     "id": "b6683e28-10ae-46ae-9072-126e5ffac8e0",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hit",
+                    "action": "HitRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -99,6 +115,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "MoveY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee64b3cb-80a5-4dae-b345-00dac37d43d0",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HitLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca595981-9aeb-47a7-af81-b3896d7848f0",
+                    "path": "<Gamepad>/rightStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HitDirection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

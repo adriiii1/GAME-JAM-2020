@@ -51,10 +51,26 @@ public class @Input : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Hit"",
+                    ""name"": ""HitRight"",
                     ""type"": ""Button"",
                     ""id"": ""9d0e5a84-d3c4-4aa9-adc8-a175040cdff6"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""HitLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""840810c2-82b8-4a53-b091-53a9e9356cd5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""HitDirection"",
+                    ""type"": ""Value"",
+                    ""id"": ""50635cd8-0110-4585-b4fe-f02f459b6198"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -96,11 +112,11 @@ public class @Input : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b6683e28-10ae-46ae-9072-126e5ffac8e0"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Hit"",
+                    ""action"": ""HitRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -112,6 +128,28 @@ public class @Input : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MoveY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee64b3cb-80a5-4dae-b345-00dac37d43d0"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HitLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca595981-9aeb-47a7-af81-b3896d7848f0"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HitDirection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -126,7 +164,9 @@ public class @Input : IInputActionCollection, IDisposable
         m_Player_MoveY = m_Player.FindAction("MoveY", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Rewind = m_Player.FindAction("Rewind", throwIfNotFound: true);
-        m_Player_Hit = m_Player.FindAction("Hit", throwIfNotFound: true);
+        m_Player_HitRight = m_Player.FindAction("HitRight", throwIfNotFound: true);
+        m_Player_HitLeft = m_Player.FindAction("HitLeft", throwIfNotFound: true);
+        m_Player_HitDirection = m_Player.FindAction("HitDirection", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -180,7 +220,9 @@ public class @Input : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_MoveY;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Rewind;
-    private readonly InputAction m_Player_Hit;
+    private readonly InputAction m_Player_HitRight;
+    private readonly InputAction m_Player_HitLeft;
+    private readonly InputAction m_Player_HitDirection;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
@@ -189,7 +231,9 @@ public class @Input : IInputActionCollection, IDisposable
         public InputAction @MoveY => m_Wrapper.m_Player_MoveY;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Rewind => m_Wrapper.m_Player_Rewind;
-        public InputAction @Hit => m_Wrapper.m_Player_Hit;
+        public InputAction @HitRight => m_Wrapper.m_Player_HitRight;
+        public InputAction @HitLeft => m_Wrapper.m_Player_HitLeft;
+        public InputAction @HitDirection => m_Wrapper.m_Player_HitDirection;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,9 +255,15 @@ public class @Input : IInputActionCollection, IDisposable
                 @Rewind.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRewind;
                 @Rewind.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRewind;
                 @Rewind.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRewind;
-                @Hit.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHit;
-                @Hit.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHit;
-                @Hit.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHit;
+                @HitRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitRight;
+                @HitRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitRight;
+                @HitRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitRight;
+                @HitLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitLeft;
+                @HitLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitLeft;
+                @HitLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitLeft;
+                @HitDirection.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitDirection;
+                @HitDirection.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitDirection;
+                @HitDirection.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitDirection;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -230,9 +280,15 @@ public class @Input : IInputActionCollection, IDisposable
                 @Rewind.started += instance.OnRewind;
                 @Rewind.performed += instance.OnRewind;
                 @Rewind.canceled += instance.OnRewind;
-                @Hit.started += instance.OnHit;
-                @Hit.performed += instance.OnHit;
-                @Hit.canceled += instance.OnHit;
+                @HitRight.started += instance.OnHitRight;
+                @HitRight.performed += instance.OnHitRight;
+                @HitRight.canceled += instance.OnHitRight;
+                @HitLeft.started += instance.OnHitLeft;
+                @HitLeft.performed += instance.OnHitLeft;
+                @HitLeft.canceled += instance.OnHitLeft;
+                @HitDirection.started += instance.OnHitDirection;
+                @HitDirection.performed += instance.OnHitDirection;
+                @HitDirection.canceled += instance.OnHitDirection;
             }
         }
     }
@@ -243,6 +299,8 @@ public class @Input : IInputActionCollection, IDisposable
         void OnMoveY(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnRewind(InputAction.CallbackContext context);
-        void OnHit(InputAction.CallbackContext context);
+        void OnHitRight(InputAction.CallbackContext context);
+        void OnHitLeft(InputAction.CallbackContext context);
+        void OnHitDirection(InputAction.CallbackContext context);
     }
 }
