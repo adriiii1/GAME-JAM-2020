@@ -401,10 +401,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 306715722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a771eb2f4f3ff4496b8f32253f680d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3da3442ea7d5749498cf4fdd9b0c2bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: 1
+  player: 2
   controller: {fileID: 306715725}
   raquet: {fileID: 514557658}
   ball: {fileID: 813197898}

@@ -27,8 +27,7 @@ public class PlayerController : MonoBehaviour{
         input.Player.MoveX.canceled += ctx => xAxis = 0f;
         input.Player.MoveY.canceled += ctx => yAxis = 0f;
         input.Player.Dash.performed += ctx => OnDash();
-        input.Player.HitRight.performed += ctx => OnHitRight();
-        input.Player.HitLeft.performed += ctx => OnHitLeft();
+        input.Player.Hit.performed += ctx => OnHit();
         input.Player.HitDirection.performed += ctx => hitDir = ctx.ReadValue<float>();
         input.Player.HitDirection.canceled += ctx => hitDir = 0f;
     }
@@ -37,8 +36,15 @@ public class PlayerController : MonoBehaviour{
         controller.Move(direction * 1f);
     }
 
-    private void OnHitRight(){
-        if(!left){
+    private void OnHit(){
+        if(left){   
+            raquet.transform.Rotate(0,180,0,Space.Self);
+            left = false;
+            if(Vector3.Distance(raquet.transform.position,ball.transform.position)<1.5){
+                ball.Hit(player);
+                ball.GetComponent<Rigidbody>().AddForce(new Vector3(hitDir/3,0.4f,1f)*0.35f,ForceMode.Impulse);
+            }
+        }else{
             raquet.transform.Rotate(0,-180,0,Space.Self);
             left = true;
             if(Vector3.Distance(raquet.transform.position,ball.transform.position)<1.5){
@@ -47,17 +53,6 @@ public class PlayerController : MonoBehaviour{
             }
         }
     }
-    private void OnHitLeft(){
-        if(left){   
-            raquet.transform.Rotate(0,180,0,Space.Self);
-            left = false;
-            if(Vector3.Distance(raquet.transform.position,ball.transform.position)<1.5){
-                ball.Hit(player);
-                ball.GetComponent<Rigidbody>().AddForce(new Vector3(hitDir/3,0.4f,1f)*0.35f,ForceMode.Impulse);
-            }
-        }
-    }
-
     void OnEnable() {
         input.Player.Enable();
     }

@@ -38,17 +38,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "HitRight",
+                    "name": "Hit",
                     "type": "Button",
                     "id": "9d0e5a84-d3c4-4aa9-adc8-a175040cdff6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "HitLeft",
-                    "type": "Button",
-                    "id": "840810c2-82b8-4a53-b091-53a9e9356cd5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -103,7 +95,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HitRight",
+                    "action": "Hit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -115,17 +107,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "MoveY",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ee64b3cb-80a5-4dae-b345-00dac37d43d0",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HitLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

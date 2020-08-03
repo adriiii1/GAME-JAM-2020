@@ -18,9 +18,6 @@ public class AIController : MonoBehaviour{
     private Vector3 direction;
     #endregion
 
-    /*private void OnDash(){
-        controller.Move(direction * 1f);
-    }*/
     private void hit(){
         if(left){   
             raquet.transform.Rotate(0,180,0,Space.Self);
