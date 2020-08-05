@@ -19,16 +19,17 @@ public class AIController : MonoBehaviour{
     #endregion
 
     private void hit(){
+        float dir = Random.Range(-1f,1f);
         if(left){   
             raquet.transform.Rotate(0,180,0,Space.Self);
             left = false;
-            ball.Hit(player);
-            ball.GetComponent<Rigidbody>().AddForce(new Vector3(0f,0.4f,-1f)*0.35f,ForceMode.Impulse);
+            Vector3 ballDir = new Vector3(dir,0.4f,-1f);
+            ball.Hit(player , ballDir);
         }else{
             raquet.transform.Rotate(0,-180,0,Space.Self);
             left = true;
-            ball.Hit(player);
-            ball.GetComponent<Rigidbody>().AddForce(new Vector3(0f,0.4f,-1f)*0.35f,ForceMode.Impulse);
+            Vector3 ballDir = new Vector3(dir,0.4f,-1f);
+            ball.Hit(player , ballDir);
         }
     }
     void Start(){
@@ -37,7 +38,7 @@ public class AIController : MonoBehaviour{
 
     void Update(){
         direction = transform.position - ball.transform.position;
-        direction = new Vector3(-direction.x, 0f, -direction.z);
+        direction = new Vector3(-direction.x, 0f, 0f);
         if(direction.magnitude >= 0.1f){
             controller.Move(direction * speed * Time.deltaTime); 
         }

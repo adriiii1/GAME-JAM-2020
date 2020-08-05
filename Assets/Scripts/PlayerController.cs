@@ -16,8 +16,14 @@ public class PlayerController : MonoBehaviour{
     private float yAxis;
     private float hitDir;
     private bool left = false;
+    private bool canDash = true;
     private Vector3 direction;
     #endregion
+
+    IEnumerator CountdownTimer(){
+        yield return new WaitForSeconds(5);
+        canDash = true;
+    }
 
     private void Awake(){
         input = new Input();
@@ -33,7 +39,11 @@ public class PlayerController : MonoBehaviour{
     }
 
     private void OnDash(){
-        controller.Move(direction * 1f);
+        if(canDash){
+           controller.Move(direction * 1f);
+           canDash = false; 
+           StartCoroutine(CountdownTimer());
+        }
     }
 
     private void OnHit(){
@@ -41,15 +51,15 @@ public class PlayerController : MonoBehaviour{
             raquet.transform.Rotate(0,180,0,Space.Self);
             left = false;
             if(Vector3.Distance(raquet.transform.position,ball.transform.position)<1.5){
-                ball.Hit(player);
-                ball.GetComponent<Rigidbody>().AddForce(new Vector3(hitDir/3,0.4f,1f)*0.35f,ForceMode.Impulse);
+                Vector3 ballDir = new Vector3(hitDir/3,0.4f,1f);
+                ball.Hit(player, ballDir);
             }
         }else{
             raquet.transform.Rotate(0,-180,0,Space.Self);
             left = true;
             if(Vector3.Distance(raquet.transform.position,ball.transform.position)<1.5){
-                ball.Hit(player);
-                ball.GetComponent<Rigidbody>().AddForce(new Vector3(hitDir/3,0.4f,1f)*0.35f,ForceMode.Impulse);
+                Vector3 ballDir = new Vector3(hitDir/3,0.4f,1f);
+                ball.Hit(player, ballDir);
             }
         }
     }

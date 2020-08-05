@@ -21,4 +21,8 @@ public class CanchaController : MonoBehaviour{
             }
         }
     }
+
+    public void resetBounces(){
+        numBounces = 0;
+    }
 }
