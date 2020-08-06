@@ -21,21 +21,6 @@ public class GameManager : MonoBehaviour{
 
     private int[] array = new int[]{0, 15, 30 , 40};
     #endregion
-
-    private void resetBall(int player){
-        if(player == 1){
-            ball.transform.position = pos1;
-            ball.GetComponent<Rigidbody>().useGravity = false;
-            ball.GetComponent<Rigidbody>().isKinematic = true;
-        }else{
-            ball.transform.position = pos2;
-            ball.GetComponent<Rigidbody>().useGravity = false;
-            ball.GetComponent<Rigidbody>().isKinematic = true;
-        }
-        ball.resetPlayer();
-        ball.GetComponent<Rigidbody>().isKinematic = false;
-    }
-
     public void lastPlayerHit(int player){
         lastPlayerToHit = player;
     }
@@ -49,7 +34,7 @@ public class GameManager : MonoBehaviour{
                 p1points = 0;
                 p2points = 0;
             }
-            resetBall(1);
+            ball.resetBall(1);
         }else{
             if(p2points < 3){
                 p2points++;
@@ -58,7 +43,7 @@ public class GameManager : MonoBehaviour{
                 p1points = 0;
                 p2points = 0;
             }
-            resetBall(2);
+            ball.resetBall(2);
         }
         txtP1.text = array[p1points].ToString();
         txtP2.text = array[p2points].ToString();

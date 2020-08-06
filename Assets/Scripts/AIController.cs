@@ -16,11 +16,12 @@ public class AIController : MonoBehaviour{
     private float yAxis;
     private float hitDir;
     private bool left = false;
+    private bool canRewind = false;
     private Vector3 direction;
     #endregion
 
     private void hit(){
-        animator.SetBool("hit",true);
+        animator.SetTrigger("hit");
         float dir = Random.Range(-1f,1f);
         if(left){
             left = false;
@@ -31,7 +32,6 @@ public class AIController : MonoBehaviour{
             Vector3 ballDir = new Vector3(dir,0.4f,-1f);
             ball.Hit(player , ballDir);
         }
-        animator.SetBool("hit",false);
     }
     void Start(){
         

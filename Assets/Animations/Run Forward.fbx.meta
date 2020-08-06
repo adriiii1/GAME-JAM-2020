@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 51046c9dfec242f4ab764e0c881a9cb0
+guid: 3eade228575d3a94cbab8afe37c96072
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Right Strafe Walk
+    second: mixamo.com
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -27,7 +27,7 @@ ModelImporter:
     importAnimatedCustomProperties: 0
     importConstraints: 0
     animationCompression: 3
-    animationRotationError: 0.5
+    animationRotationError: 0
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
@@ -35,21 +35,21 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Right Strafe Walk
+      name: mixamo.com
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 28
+      lastFrame: 35
       wrapMode: 0
-      orientationOffsetY: 0
+      orientationOffsetY: -12.265
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -431,12 +431,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5c70abcdd0690c347ae750809657e6c7,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

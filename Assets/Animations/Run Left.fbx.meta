@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 5fb12e28839465744a66c09e63729c40
+guid: 4065eeea363f22647a45d9e87a43e39e
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Jog Forward (1)
-  - first:
-      74: 2160953449189497568
-    second: Jog Forward
+    second: mixamo.com
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -30,7 +27,7 @@ ModelImporter:
     importAnimatedCustomProperties: 0
     importConstraints: 0
     animationCompression: 3
-    animationRotationError: 0.5
+    animationRotationError: 0
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
@@ -38,13 +35,13 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jog Forward
+      name: mixamo.com
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 25
+      lastFrame: 60
       wrapMode: 0
-      orientationOffsetY: 0
+      orientationOffsetY: 12.45
       level: 0
       cycleOffset: 0
       loop: 0
@@ -54,7 +51,7 @@ ModelImporter:
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0

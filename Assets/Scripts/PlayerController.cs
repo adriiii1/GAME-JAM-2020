@@ -18,12 +18,18 @@ public class PlayerController : MonoBehaviour{
     private float hitDir;
     private bool left = false;
     private bool canDash = true;
+    private bool canRewind = false;
     private Vector3 direction;
     #endregion
 
     IEnumerator CountdownTimer(){
         yield return new WaitForSeconds(5);
         canDash = true;
+    }
+
+    IEnumerator CountdownRewindTimer(){
+        yield return new WaitForSeconds(15);
+        canRewind= true;
     }
 
     private void Awake(){
@@ -37,6 +43,19 @@ public class PlayerController : MonoBehaviour{
         input.Player.Hit.performed += ctx => OnHit();
         input.Player.HitDirection.performed += ctx => hitDir = ctx.ReadValue<float>();
         input.Player.HitDirection.canceled += ctx => hitDir = 0f;
+        input.Player.Rewind.performed += ctx => OnRewind();
+        input.Player.Rewind.canceled += ctx => OnRewindStop();
+    }
+
+    private void OnRewind(){
+        if(canRewind){
+            ball.StartRewind();
+        }
+    }
+    private void OnRewindStop(){
+        ball.RewindStop();
+        canRewind = false;
+        StartCoroutine(CountdownRewindTimer());
     }
 
     private void OnDash(){
@@ -48,7 +67,7 @@ public class PlayerController : MonoBehaviour{
     }
 
     private void OnHit(){
-        animator.SetBool("hit",true);
+        animator.SetTrigger("hit");
         if(left){   
             left = false;
             if(Vector3.Distance(raquet.transform.position,ball.transform.position)<1.5){
@@ -62,7 +81,6 @@ public class PlayerController : MonoBehaviour{
                 ball.Hit(player, ballDir);
             }
         }
-        //animator.SetBool("hit",false);
     }
     void OnEnable() {
         input.Player.Enable();
@@ -72,7 +90,7 @@ public class PlayerController : MonoBehaviour{
     }
 
     void Start(){
-        
+        StartCoroutine(CountdownRewindTimer());
     }
 
     void Update(){
