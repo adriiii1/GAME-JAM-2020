@@ -38,6 +38,7 @@ public class Ball : MonoBehaviour{
     }
 
     public void StartRewind(){
+        lastPlayer = 0;
         rewind = true;
         rigidbody.isKinematic = true;
     }
