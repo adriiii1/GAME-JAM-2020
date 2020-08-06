@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour{
 
     #region variables
     [SerializeField] public Input input;
+    public Animator animator;
     public int player;
     public CharacterController controller;
     public GameObject raquet;
@@ -47,21 +48,21 @@ public class PlayerController : MonoBehaviour{
     }
 
     private void OnHit(){
+        animator.SetBool("hit",true);
         if(left){   
-            raquet.transform.Rotate(0,180,0,Space.Self);
             left = false;
             if(Vector3.Distance(raquet.transform.position,ball.transform.position)<1.5){
                 Vector3 ballDir = new Vector3(hitDir/3,0.4f,1f);
                 ball.Hit(player, ballDir);
             }
         }else{
-            raquet.transform.Rotate(0,-180,0,Space.Self);
             left = true;
             if(Vector3.Distance(raquet.transform.position,ball.transform.position)<1.5){
                 Vector3 ballDir = new Vector3(hitDir/3,0.4f,1f);
                 ball.Hit(player, ballDir);
             }
         }
+        //animator.SetBool("hit",false);
     }
     void OnEnable() {
         input.Player.Enable();
@@ -76,6 +77,8 @@ public class PlayerController : MonoBehaviour{
 
     void Update(){
         direction = new Vector3(xAxis,0f,yAxis).normalized;
+        animator.SetFloat("inputX",xAxis);
+        animator.SetFloat("inputZ",yAxis);
         if(direction.magnitude >= 0.1f){
             controller.Move(direction * speed * Time.deltaTime); 
         }

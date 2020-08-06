@@ -29,6 +29,7 @@ public class Ball : MonoBehaviour{
             this.transform.position = new Vector3(this.transform.position.x,1.5f,this.transform.position.z);
             rigidbody.velocity = Vector3.zero;
             rigidbody.useGravity = true;
+            rigidbody.isKinematic = false;
             rigidbody.AddForce(direction*15f,ForceMode.Force);
             GetComponent<AudioSource>().Play();
             manager.lastPlayerHit(player);

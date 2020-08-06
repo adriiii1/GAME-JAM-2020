@@ -21,13 +21,6 @@ public class GameManager : MonoBehaviour{
 
     private int[] array = new int[]{0, 15, 30 , 40};
     #endregion
-    void Start(){
-        
-    }
-
-    void Update(){
-        
-    }
 
     private void resetBall(int player){
         if(player == 1){
