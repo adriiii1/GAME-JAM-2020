@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour{
     }
 
     private void OnRewind(){
-        if(canRewind){
+        if((canRewind)&&(ball.lastPlayer == this.player)){
             ball.StartRewind();
         }
     }
@@ -71,13 +71,13 @@ public class PlayerController : MonoBehaviour{
         if(left){   
             left = false;
             if(Vector3.Distance(raquet.transform.position,ball.transform.position)<1.5){
-                Vector3 ballDir = new Vector3(hitDir/3,0.4f,1f);
+                Vector3 ballDir = new Vector3(hitDir/2,0.4f,1f);
                 ball.Hit(player, ballDir);
             }
         }else{
             left = true;
             if(Vector3.Distance(raquet.transform.position,ball.transform.position)<1.5){
-                Vector3 ballDir = new Vector3(hitDir/3,0.4f,1f);
+                Vector3 ballDir = new Vector3(hitDir/2,0.4f,1f);
                 ball.Hit(player, ballDir);
             }
         }

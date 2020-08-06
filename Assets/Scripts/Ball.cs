@@ -41,6 +41,7 @@ public class Ball : MonoBehaviour{
         lastPlayer = 0;
         rewind = true;
         rigidbody.isKinematic = true;
+        rigidbody.useGravity = false;
     }
     public void Rewind(){
         if(positions.Count > 0){
@@ -53,7 +54,6 @@ public class Ball : MonoBehaviour{
 
     public void RewindStop(){
         rewind = false;
-        rigidbody.isKinematic = false;
     }
 
     public int getPlayer(){
