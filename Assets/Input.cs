@@ -35,7 +35,7 @@ public class @Input : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Dash"",
+                    ""name"": ""Start"",
                     ""type"": ""Button"",
                     ""id"": ""78a768cd-4170-4833-bee0-8a5874f94215"",
                     ""expectedControlType"": ""Button"",
@@ -82,11 +82,11 @@ public class @Input : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""65a627f1-628b-44d6-a355-e956b918f620"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dash"",
+                    ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -143,7 +143,7 @@ public class @Input : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MoveX = m_Player.FindAction("MoveX", throwIfNotFound: true);
         m_Player_MoveY = m_Player.FindAction("MoveY", throwIfNotFound: true);
-        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_Start = m_Player.FindAction("Start", throwIfNotFound: true);
         m_Player_Rewind = m_Player.FindAction("Rewind", throwIfNotFound: true);
         m_Player_Hit = m_Player.FindAction("Hit", throwIfNotFound: true);
         m_Player_HitDirection = m_Player.FindAction("HitDirection", throwIfNotFound: true);
@@ -198,7 +198,7 @@ public class @Input : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_MoveX;
     private readonly InputAction m_Player_MoveY;
-    private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Start;
     private readonly InputAction m_Player_Rewind;
     private readonly InputAction m_Player_Hit;
     private readonly InputAction m_Player_HitDirection;
@@ -208,7 +208,7 @@ public class @Input : IInputActionCollection, IDisposable
         public PlayerActions(@Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveX => m_Wrapper.m_Player_MoveX;
         public InputAction @MoveY => m_Wrapper.m_Player_MoveY;
-        public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Start => m_Wrapper.m_Player_Start;
         public InputAction @Rewind => m_Wrapper.m_Player_Rewind;
         public InputAction @Hit => m_Wrapper.m_Player_Hit;
         public InputAction @HitDirection => m_Wrapper.m_Player_HitDirection;
@@ -227,9 +227,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @MoveY.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveY;
                 @MoveY.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveY;
                 @MoveY.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveY;
-                @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Start.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
                 @Rewind.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRewind;
                 @Rewind.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRewind;
                 @Rewind.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRewind;
@@ -249,9 +249,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @MoveY.started += instance.OnMoveY;
                 @MoveY.performed += instance.OnMoveY;
                 @MoveY.canceled += instance.OnMoveY;
-                @Dash.started += instance.OnDash;
-                @Dash.performed += instance.OnDash;
-                @Dash.canceled += instance.OnDash;
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
                 @Rewind.started += instance.OnRewind;
                 @Rewind.performed += instance.OnRewind;
                 @Rewind.canceled += instance.OnRewind;
@@ -269,7 +269,7 @@ public class @Input : IInputActionCollection, IDisposable
     {
         void OnMoveX(InputAction.CallbackContext context);
         void OnMoveY(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
         void OnRewind(InputAction.CallbackContext context);
         void OnHit(InputAction.CallbackContext context);
         void OnHitDirection(InputAction.CallbackContext context);

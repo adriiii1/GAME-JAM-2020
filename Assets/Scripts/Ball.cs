@@ -7,8 +7,13 @@ public class Ball : MonoBehaviour{
     public GameManager manager;
     public Rigidbody rigidbody;
     public int lastPlayer = 0;
+<<<<<<< Updated upstream
     private Vector3 pos1 = new Vector3(0f,1.5f,-12f);
     private Vector3 pos2 = new Vector3(0f,1.5f,12f);
+=======
+    private Vector3 pos1 = new Vector3(-1.4f,1.5f,-12f);
+    private Vector3 pos2 = new Vector3(-1.4f,1.5f,12f);
+>>>>>>> Stashed changes
     private List<Vector3> positions;
     private bool rewind = false;
     private bool record = false;
