@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/menu.unity
+    guid: a3d1c2df570972441999bf386f0ad3b6
+  - enabled: 1
     path: Assets/Scenes/canchonprueba.unity
     guid: 65164d23451b66145a985d75a330fc57
   m_configObjects: {}

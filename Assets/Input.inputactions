@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Dash",
+                    "name": "Start",
                     "type": "Button",
                     "id": "78a768cd-4170-4833-bee0-8a5874f94215",
                     "expectedControlType": "Button",
@@ -69,11 +69,11 @@
                 {
                     "name": "",
                     "id": "65a627f1-628b-44d6-a355-e956b918f620",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dash",
+                    "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

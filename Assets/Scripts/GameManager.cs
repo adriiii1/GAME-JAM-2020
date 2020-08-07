@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour{
@@ -16,11 +17,18 @@ public class GameManager : MonoBehaviour{
     public TextMeshProUGUI txtP2;
     public TextMeshProUGUI txtP1g;
     public TextMeshProUGUI txtP2g;
+    public GameObject winMenu;
+    public TextMeshProUGUI txtWin;
     private Vector3 pos1 = new Vector3(0f,1.5f,-12f);
     private Vector3 pos2 = new Vector3(0f,1.5f,12f);
 
     private int[] array = new int[]{0, 15, 30 , 40};
     #endregion
+
+    IEnumerator exitTimer(){
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(0,LoadSceneMode.Single);
+    }
     public void lastPlayerHit(int player){
         lastPlayerToHit = player;
     }
@@ -50,11 +58,14 @@ public class GameManager : MonoBehaviour{
         txtP1g.text = p1games.ToString();
         txtP2g.text = p2games.ToString();
         if((p1games >= 3)||(p2games >= 3)){
+            ball.transform.position = new Vector3(0f,-14f,0f);
+            winMenu.SetActive(true);
             if(p1games > p2games){
-                Debug.Log("Player 1 wins!");
+                txtWin.text = "PLAYER 1 WINS";
             }else{
-                Debug.Log("Player 2 wins!");
+                txtWin.text = "PLAYER 2 WINS";
             }
+            StartCoroutine(exitTimer());
         }
     }
 }
