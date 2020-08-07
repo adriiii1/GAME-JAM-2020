@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour{
     #region variables
     public GameManager manager;
     public Rigidbody rigidbody;
-    private int lastPlayer = 0;
+    public int lastPlayer = 0;
     private Vector3 pos1 = new Vector3(0f,1.5f,-12f);
     private Vector3 pos2 = new Vector3(0f,1.5f,12f);
     private List<Vector3> positions;
